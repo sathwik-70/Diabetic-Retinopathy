@@ -87,5 +87,4 @@ This project was trained on the **Indian Diabetic Retinopathy Image Dataset (IDR
 ## 🤝 Contribution
 Feel free to open issues or submit PRs if you find improvements!
 
-## 📜 License
-This project is licensed under the MIT License.
+
