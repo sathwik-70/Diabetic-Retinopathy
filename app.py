@@ -196,14 +196,20 @@ def main():
 
                             st.image(final_viz, caption="Lesions (Masks) + Features (Markers)", use_column_width=True)
                             
-                            # Legend
-                            st.caption("Legend:")
-                            cols = st.columns(5)
-                            legend_data = zip(cols, seg_labels, ["Red", "Green", "Blue", "Yellow", "Cyan"])
-                            for col, label, color_name in legend_data:
-                                col.markdown(f"**{label}**: {color_name}")
-                                
-                            st.caption("*Markers: Cyan Circle (Optic Disc), Magenta Cross (Fovea)*")
+                            # Legend with visual indicators
+                            st.markdown("### Legend")
+                            st.markdown("""
+                            <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+                                <div style="display: flex; align-items: center;"><span style="color:red; font-size:1.5em;">■</span>&nbsp;Microaneurysms</div>
+                                <div style="display: flex; align-items: center;"><span style="color:green; font-size:1.5em;">■</span>&nbsp;Hemorrhages</div>
+                                <div style="display: flex; align-items: center;"><span style="color:blue; font-size:1.5em;">■</span>&nbsp;Hard Exudates</div>
+                                <div style="display: flex; align-items: center;"><span style="color:yellow; font-size:1.5em;">■</span>&nbsp;Soft Exudates</div>
+                                <div style="display: flex; align-items: center;"><span style="color:cyan; font-size:1.5em;">■</span>&nbsp;Optic Disc</div>
+                            </div>
+                            <div style="margin-top: 10px; font-size: 0.9em; color: #aaa;">
+                                <i>Markers: Cyan Circle (Optic Disc), Magenta Cross (Fovea)</i>
+                            </div>
+                            """, unsafe_allow_html=True)
 
                         except Exception as e:
                             st.error(f"Error during analysis: {str(e)}")
