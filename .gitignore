@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+env/
+
+# Dataset (Too large)
+dataset/
+
+# Temp
+temp/
+
+# IDE
+.vscode/
+.idea/
+
+# Local Dev
+debug_csv.py
+evaluate_*.py
