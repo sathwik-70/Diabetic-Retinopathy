@@ -23,9 +23,7 @@ st.set_page_config(
 # Custom CSS for styling
 st.markdown("""
     <style>
-    .main {
-        background-color: #f5f5f5;
-    }
+    /* Custom Button Style */
     .stButton>button {
         color: white;
         background-color: #ff4b4b;
