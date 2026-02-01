@@ -6,3 +6,4 @@ pillow
 streamlit
 scikit-learn
 matplotlib
+altair<5
