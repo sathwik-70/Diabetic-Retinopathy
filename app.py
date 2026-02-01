@@ -71,6 +71,30 @@ def main():
                 image = Image.open(uploaded_file).convert("RGB")
                 st.image(image, use_column_width=True)
                 
+                # --- Validation Logic ---
+                def is_valid_fundus(img):
+                    # Simple heuristic: Retinal images are overwhelmingly Red/Orange
+                    # Logic: Mean Red > Mean Green and Mean Red > Mean Blue
+                    # Also Blue channel is usually very low in Retinal images
+                    img_array = np.array(img)
+                    mean_r = np.mean(img_array[:, :, 0])
+                    mean_g = np.mean(img_array[:, :, 1])
+                    mean_b = np.mean(img_array[:, :, 2])
+                    
+                    # Heuristics
+                    is_red_dominant = (mean_r > mean_g) and (mean_r > mean_b)
+                    is_dark_blue = mean_b < (mean_r * 0.7) # Blue is typically much lower
+                    
+                    # Also check against purely white/black images
+                    is_not_blank = mean_r > 20 and mean_r < 240
+                    
+                    return is_red_dominant and is_dark_blue and is_not_blank
+
+                if not is_valid_fundus(image):
+                    st.error("⚠️ Invalid Image Detected")
+                    st.warning("Please upload a valid retinal fundus image.")
+                    st.stop()
+                
                 analyze_btn = st.button("Run Full Analysis", use_container_width=True)
 
             with col_results:
