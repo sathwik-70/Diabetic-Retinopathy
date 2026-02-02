@@ -1,10 +1,12 @@
 # 👁️ Diabetic Retinopathy Analysis System
 
+preview : https://diabeticretinopathy404.streamlit.app/
+
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-orange?logo=pytorch&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B?logo=streamlit&logoColor=white)
 ![Accuracy](https://img.shields.io/badge/Accuracy-95.88%25-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-green)
+
 
 A comprehensive Deep Learning solution for the automated diagnosis of **Diabetic Retinopathy (DR)** using the IDRiD dataset. This system not only predicts the severity of the disease but also provides explainable insights through lesion segmentation and feature localization.
 
