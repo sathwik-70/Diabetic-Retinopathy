@@ -1,28 +1,32 @@
 # 🏥 IDRiD: Unified Diabetic Retinopathy Analysis System
 
+[![Streamlit Preview](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diabeticretinopathy404.streamlit.app)
+
+**🟢 Live Preview Available At:** [diabeticretinopathy404.streamlit.app](https://diabeticretinopathy404.streamlit.app)
+
 This project is a comprehensive end-to-end Deep Learning diagnostic tool designed to analyze high-resolution retinal fundus images. Built upon the **Indian Diabetic Retinopathy Image Dataset (IDRiD)**, it addresses three distinct diagnostic challenges: Disease Severity Grading, Pixel-Level Lesion Segmentation, and Key Feature Localization.
 
 ---
 
 ## 🏗️ System Architecture
 
-The overarching system architecture decouple the frontend UI from the deep learning inference engine. It uses a centralized `RetinaAnalyzer` to dispatch image tensors to three independent architectural pathways.
+The overarching system architecture decouples the frontend UI from the deep learning inference engine. It uses a centralized `RetinaAnalyzer` to dispatch image tensors to three independent architectural pathways.
 
 ```mermaid
 graph TD
-    UI[Streamlit UI] -->|Uploads Image| Analyzer[RetinaAnalyzer]
+    UI[Streamlit UI] -->|"Uploads Image"| Analyzer[RetinaAnalyzer]
     
     subgraph Deep Learning Engine
-        Analyzer --> |Dispatches Tensor| EF[EfficientNet-B0<br>Grading]
-        Analyzer --> |Dispatches Tensor| UN[U-Net<br>Segmentation]
-        Analyzer --> |Dispatches Tensor| RN[ResNet-18<br>Localization]
+        Analyzer --> |"Dispatches Tensor"| EF[EfficientNet-B0<br>Grading]
+        Analyzer --> |"Dispatches Tensor"| UN[U-Net<br>Segmentation]
+        Analyzer --> |"Dispatches Tensor"| RN[ResNet-18<br>Localization]
     end
     
-    EF --> |Class Probabilities| Aggregator[Results Aggregator]
-    UN --> |Multi-class Masks| Aggregator
-    RN --> |(X, Y) Coordinates| Aggregator
+    EF --> |"Class Probabilities"| Aggregator[Results Aggregator]
+    UN --> |"Multi-class Masks"| Aggregator
+    RN --> |"(X, Y) Coordinates"| Aggregator
     
-    Aggregator -->|JSON Response| UI
+    Aggregator -->|"JSON Response"| UI
     
     style UI fill:#ff4b4b,stroke:#a00,stroke-width:2px,color:#fff
     style Analyzer fill:#4e79a7,stroke:#2c527e,stroke-width:2px,color:#fff
